@@ -1,0 +1,14 @@
+# Keep Docker context small, but include the built runtime JAR
+.git
+.github
+.idea
+.vscode
+.mvn/wrapper/maven-wrapper.jar
+
+# Build output: keep only final JAR required by Dockerfile
+target/*
+!target/*.jar
+
+# Misc
+*.log
+*.tmp
