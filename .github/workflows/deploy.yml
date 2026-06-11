@@ -43,7 +43,7 @@ jobs:
       - name: Build JAR
         run: |
           chmod +x mvnw
-          ./mvnw -B -DskipTests package
+          mvn -B -DskipTests package
 
       - name: Build and Push image
         id: image
