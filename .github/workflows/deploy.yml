@@ -52,10 +52,8 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}-${{ github.run_id }}
         run: |
           IMAGE_URI="$ECR_REGISTRY/${{ env.ECR_REPOSITORY }}:$IMAGE_TAG"
-          IMAGE_URI_LATEST="$ECR_REGISTRY/${{ env.ECR_REPOSITORY }}:latest"
-          docker build -t "$IMAGE_URI" -t "$IMAGE_URI_LATEST" .
+          docker build -t "$IMAGE_URI" .
           docker push "$IMAGE_URI"
-          docker push "$IMAGE_URI_LATEST"
           echo "uri=$IMAGE_URI" >> "$GITHUB_OUTPUT"
 
   deploy-ecs:
