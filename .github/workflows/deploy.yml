@@ -43,13 +43,13 @@ jobs:
       - name: Build JAR
         run: |
           chmod +x mvnw
-          mvn -B -DskipTests package
+          ./mvnw -B -DskipTests package
 
       - name: Build and Push image
         id: image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ github.sha }}
+          IMAGE_TAG: ${{ github.sha }}-${{ github.run_id }}
         run: |
           IMAGE_URI="$ECR_REGISTRY/${{ env.ECR_REPOSITORY }}:$IMAGE_TAG"
           docker build -t "$IMAGE_URI" .
