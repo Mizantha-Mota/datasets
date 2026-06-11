@@ -13,10 +13,6 @@ env:
   AWS_REGION: ${{ vars.AWS_REGION || 'us-east-1' }}
   ECR_REPOSITORY: ${{ vars.ECR_REPOSITORY || 'api-demo' }}
 
-defaults:
-  run:
-    working-directory: api-ejemplo
-
 jobs:
   build-and-push:
     name: Build and Push Docker Image
